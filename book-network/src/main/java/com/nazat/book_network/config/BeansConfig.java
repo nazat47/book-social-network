@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -26,6 +27,8 @@ import static org.springframework.http.HttpHeaders.*;
 public class BeansConfig {
 
     private final UserDetailsService userDetailsService;
+    @Value("${application.cors.origins}")
+    private List<String> allowedOrigins;
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
@@ -55,21 +58,10 @@ public class BeansConfig {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         final CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowCredentials(true);
-        configuration.setAllowedOrigins(List.of("http://localhost:3000","http://localhost:8080"));
-        configuration.setAllowedHeaders(Arrays.asList(
-                        ORIGIN,
-                        CONTENT_TYPE,
-                        ACCEPT,
-                        AUTHORIZATION
-                )
+        configuration.setAllowedOrigins(allowedOrigins);
+        configuration.setAllowedHeaders(Arrays.asList("*")
         );
-        configuration.setAllowedMethods(Arrays.asList(
-                "GET",
-                "POST",
-                "PUT",
-                "DELETE",
-                "PATCH"
-        ));
+        configuration.setAllowedMethods(Arrays.asList("*"));
         source.registerCorsConfiguration("/**", configuration);
         return new CorsFilter(source);
     }
