@@ -125,7 +125,7 @@ jobs:
     needs: [build-image]
     steps:
       - name: Set key permissions
-        run:  chmod 400 bsn.pem
+        run:  chmod 400 bsn-api.pem
       - name: Create deployment folder
         run:  ssh -i "bsn.pem" ${{ secrets.VPS_USERNAME}}@${{ secrets.VPS_IP}} "mkdir -p ci-cd"    # connect to instance and making folder
       - name: Copy docker-compose file
