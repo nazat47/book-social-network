@@ -127,12 +127,12 @@ jobs:
       - name: Set key permissions
         run:  chmod 400 bsn-api.pem
       - name: Create deployment folder
-        run:  ssh -i "bsn.pem" ${{ secrets.VPS_USERNAME}}@${{ secrets.VPS_IP}} "mkdir -p ci-cd"    # connect to instance and making folder
+        run:  ssh -i "bsn-api.pem" ${{ secrets.VPS_USERNAME}}@${{ secrets.VPS_IP}} "mkdir -p ci-cd"    # connect to instance and making folder
       - name: Copy docker-compose file
         run:  scp docker-compose.yml ${{ secrets.VPS_USERNAME}}@${{ secrets.VPS_IP}}:ci-cd/docker-compose.yml
       - name: Set ENV variables and deploy
         run: |
-          ssh -i "bsn.pem" ${{ secrets.VPS_USERNAME}}@${{ secrets.VPS_IP}} <<EOF
+          ssh -i "bsn-api.pem" ${{ secrets.VPS_USERNAME}}@${{ secrets.VPS_IP}} <<EOF
           export EMAIL_HOSTNAME=${{ secrets.EMAIL_HOSTNAME}}
           export EMAIL_USERNAME=${{ secrets.EMAIL_USERNAME}}
           export EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD}}
