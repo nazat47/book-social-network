@@ -67,6 +67,10 @@ jobs:
         with:
           java-version: 17
           distribution: "corretto"
+      - name: Set execute permissions for mvnw
+        run: |
+          cd book-network    
+          chmod +x ./mvnw
       - name: Build project
         run: |
           cd book-network
@@ -85,6 +89,10 @@ jobs:
         with:
           java-version: 17
           distribution: "corretto"
+      - name: Set execute permissions for mvnw
+        run: |
+          cd book-network    
+          chmod +x ./mvnw
       - name: Build project
         run: |
           cd book-network
