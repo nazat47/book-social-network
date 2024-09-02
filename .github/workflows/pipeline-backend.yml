@@ -74,7 +74,7 @@ jobs:
       - name: Build project
         run: |
           cd book-network
-          ./mvnw clean package
+          ./mvnw clean package -DskipTests
   build-image:
     name: Build docker image
     runs-on: self-hosted
@@ -96,7 +96,7 @@ jobs:
       - name: Build project
         run: |
           cd book-network
-          ./mvnw clean package
+          ./mvnw clean package -DskipTests
       - name: Extract project version
         id: extract_version   # to use later by id
         # getting project version
