@@ -26,7 +26,7 @@ jobs:
       - name: Compile code
         run: |
           cd book-network
-          ./mvnw clean compile
+          chmod +x ./mvnw clean compile
   
   unit-tests:
     runs-on: self-hosted
@@ -44,7 +44,7 @@ jobs:
       - name: Running unit tests
         run: |
           cd book-network
-          ./mvnw clean test
+          chmod +x ./mvnw clean test
   build:
     runs-on: self-hosted
     name: Build backend
@@ -62,7 +62,7 @@ jobs:
       - name: Build project
         run: |
           cd book-network
-          ./mvnw clean package
+          chmod +x ./mvnw clean package
   build-image:
     name: Build docker image
     runs-on: self-hosted
@@ -80,13 +80,13 @@ jobs:
       - name: Build project
         run: |
           cd book-network
-          ./mvnw clean package
+          chmod +x ./mvnw clean package
       - name: Extract project version
         id: extract_version   # to use later by id
         # getting project version
         run: |
           cd book-network
-          echo "VERSION=$(./mvnw help:evaluate -Dexpression='project.version' -q -DforceStdout)" >> $GITHUB_OUTPUT
+          echo "VERSION=$(chmod +x ./mvnw help:evaluate -Dexpression='project.version' -q -DforceStdout)" >> $GITHUB_OUTPUT
       - name: Login to docker hub
         uses: docker/login-action@v3
         with:
