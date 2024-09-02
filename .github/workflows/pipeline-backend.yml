@@ -126,8 +126,8 @@ jobs:
     steps:
       - name: Set key permissions
         run:  chmod 400 bsn-api.pem
-#      - name: Create deployment folder
-#        run:  ssh -i "bsn-api.pem" ${{ secrets.VPS_USERNAME}}@${{ secrets.VPS_IP}} "mkdir -p ci-cd"    # connect to instance and making folder
+      - name: Create deployment folder
+        run:  ssh -i "bsn-api.pem" ${{ secrets.VPS_USERNAME}}@${{ secrets.VPS_IP}} "mkdir -p ci-cd"    # connect to instance and making folder
 #      - name: Copy docker-compose file
 #        run:  sudo scp docker-compose.yml ${{ secrets.VPS_USERNAME}}@${{ secrets.VPS_IP}}:ci-cd/docker-compose.yml
 #      - name: Set ENV variables and deploy
