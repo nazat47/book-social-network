@@ -105,7 +105,7 @@ jobs:
             APP_VERSION=${{ steps.extract_version.outputs.VERSION }}
   deploy:
     name: Deploy backend
-    runs-on: self-s
+    runs-on: self-hosted
     needs: [build-image]
     steps:
       - name: Set key permission
