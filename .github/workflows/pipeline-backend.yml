@@ -111,7 +111,7 @@ jobs:
       - name: Build & Push to Dockerhub
         uses: docker/build-push-action@v5
         with:
-          context: book-network
+          context: .
           file: Dockerfile
           push: true
           platform: linux/amd64
