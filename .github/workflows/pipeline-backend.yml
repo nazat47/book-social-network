@@ -124,7 +124,7 @@ jobs:
     runs-on: self-hosted
     needs: [build-image]
     steps:
-      - name: Set key permissions
+      - name: Set key permission
         run:  chmod 400 bsn-api.pem
       - name: Create deployment folder
         run:  ssh -i "bsn-api.pem" ${{ secrets.VPS_USERNAME}}@${{ secrets.VPS_IP}} "mkdir -p ci-cd"    # connect to instance and making folder
