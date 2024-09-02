@@ -24,7 +24,7 @@ jobs:
           java-version: 17
           distribution: "corretto"
       - name: Set execute permissions for mvnw
-        run: chmod +x ./mvnw
+        run: chmod +x ./mvn
       - name: Compile code
         run: |
           cd book-network
@@ -44,7 +44,7 @@ jobs:
           java-version: 17
           distribution: "corretto"
       - name: Set execute permissions for mvnw
-        run: chmod +x ./mvnw
+        run: chmod +x ./mvn
       - name: Running unit tests
         run: |
           cd book-network
